@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Profile ,{{user.username}}</h1>
+
+    {% if user.is_authenticated %}
+    <h2><a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'dasdhboard' %}">Dasdhboard</a></h2>
+
+        
+
+        {% else%}
+    <h2><a href="{% url 'login_url' %}">Login</a>
+        <a href="{% url 'register_url' %}">Register</a></h2>
+
+        
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
